@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-use App\Http\Controllers\controller;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {

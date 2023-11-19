@@ -1,80 +1,90 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+         <meta charset="utf-8" />
+    <title>Dashboard | Appzia - Admin & Dashboard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico')}}">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- jquery.vectormap css -->
+    <link href="{{asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css')}}" rel="stylesheet"
+        type="text/css" />
+    
+    <link rel="stylesheet" href="{{ asset('assets/libs/morris.js/morris.css')}}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- DataTables -->
+    <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <!-- Responsive datatable examples -->
+    <link href="{{asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet"
+        type="text/css" />
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- Bootstrap Css -->
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
+ <div id="layout-wrapper">
+    @include('layouts.header');
+    @include('layouts.sidebaer');
+    <div class="main-content">
+        <main class="page-content">
             @yield('content')
         </main>
+           <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © Appzia.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
     </div>
+</div>
+     <!-- JAVASCRIPT -->
+      <div class="rightbar-overlay"></div>
+
+<!-- JAVASCRIPT -->
+<script src="{{ asset('assets/libs/jquery/jquery.min.js')}}"></script>
+<script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('assets/libs/metismenu/metisMenu.min.js')}}"></script>
+<script src="{{ asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+<script src="{{ asset('assets/libs/node-waves/waves.min.js')}}"></script>
+
+
+<!-- morris chart -->
+<script src="{{ asset('assets/libs/morris.js/morris.min.js')}}"></script>
+<script src="{{ asset('assets/libs/raphael/raphael.min.js')}}"></script>
+
+<!-- jquery.vectormap map -->
+<script src="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+<script src="{{ asset('assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js')}}"></script>
+
+<!-- Required datatable js -->
+<script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+
+<!-- Responsive examples -->
+<script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
+
+<script src="{{ asset('assets/js/pages/dashboard.init.js')}}"></script>
+
+<!-- App js -->
+<script src="{{ asset('assets/js/app.js')}}"></script>
 </body>
 </html>
